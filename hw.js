@@ -5,4 +5,5 @@ console.log("Hello World!")
 [1,2,3,4,5,6].foreach(n => console.log(n))
 
 console.log("learnig day")
+console.log("check2")
 
