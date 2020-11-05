@@ -13,6 +13,7 @@
             var amount = (document.getElementById("amount").value);
             var term = (document.getElementById("term").value);
             var apr = (document.getElementById("apr").value);
+            var inputs = [amount, term, apr]
             var amountNum = parseFloat(amount);
             var termNum = parseFloat(term);
             var aprNum = parseFloat(apr);
@@ -22,7 +23,7 @@
             var monthlyPayment = (amountNum * pRate) / (1 - (Math.pow((1 + pRate), loanPeriod * -1)));
             monthlyPayment = "Monthly payment: $ " + monthlyPayment.toFixed(2);
             //output       
-            if ((apr == null || apr == "") || (term == null || term == "") || (amount == null || amount == "")) {
+            if (inputs.any(input => input == '' || input == null)) {
                 document.getElementById("payment").innerHTML =
                     "Please Fill out the blank fields to claculate the monthly payment";
             } else if (isNaN(aprNum) || aprNum < 0 || aprNum > 25) {
