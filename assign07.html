@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function calculate() {
+            // input
+            var amount = (document.getElementById("amount").value);
+            var term = (document.getElementById("term").value);
+            var apr = (document.getElementById("apr").value);
+            var amountNum = parseFloat(amount);
+            var termNum = parseFloat(term);
+            var aprNum = parseFloat(apr);
+            // processing
+            var loanPeriod = 12 * termNum;
+            var pRate = aprNum / 1200;
+            var monthlyPayment = (amountNum * pRate) / (1 - (Math.pow((1 + pRate), loanPeriod * -1)));
+            monthlyPayment = "Monthly payment: $ " + monthlyPayment.toFixed(2);
+            //output       
+            if ((apr == null || apr == "") || (term == null || term == "") || (amount == null || amount == "")) {
+                document.getElementById("payment").innerHTML =
+                    "Please Fill out the blank fields to claculate the monthly payment";
+            } else if (isNaN(aprNum) || aprNum < 0 || aprNum > 25) {
+                document.getElementById("payment").innerHTML = "APR must be between 0 and 25 %";
+            } else if (isNaN(termNum) || termNum <= 0 || termNum > 40) {
+                document.getElementById("payment").innerHTML = "Loan Term must be between 1 and 40 years";
+            } else if (isNaN(amountNum)) {
+                document.getElementById("payment").innerHTML =
+                    "No letters fill out with number to claculate the monthly payment";
+            } else {
+                document.getElementById("payment").innerHTML = monthlyPayment;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <br>
+    <p><a href="../index.html">My CSS 213 Assignments</a></p>
+    <h2>This is assignment #07</h2>
+
+    <div id="container">
+        <h1>Mortgage Calculator</h1>
+        <form>
+            <ul>
+                <li><strong>APR:</strong> Annual Percentage Rate</li>
+                <li><strong>TERM:</strong> Loan Term in Years</li>
+                <li><strong>Amount:</strong> Loan Amount in Dollars</li>
+            </ul>
+            <br>
+            <fieldset>
+                <label id="in1">APR: </label>
+                <input type="text" name="apr" placeholder="Annual Percentage Rate" id="apr"><br>
+                <label id="in2">TERM: </label>
+                <input type="text" name="term" placeholder="Loan Term in Years" id="term"><br>
+                <label id="in3">Amount: </label>
+                <input type="text" name="amount" placeholder="Loan Amount" id="amount"><br>
+            </fieldset>
+
+
+            <h3>please click the orange button to get the monthly payment.</h3>
+            <button type="button" onclick="calculate()" id="button"> claculatorMPayment </button>
+            <br>
+            <div id="payment"></div>
+            <br>
+            <br>
+        </form>
+    </div>
+</body>
+
+</html>
