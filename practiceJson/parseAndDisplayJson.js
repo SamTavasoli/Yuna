@@ -31,7 +31,7 @@ function fakeOnClick()
 function getDataFromFakeXmlRequest(fileLocation)
 {
     var data = require('fs').readFileSync(fileLocation, 'utf8');
-    return { responseText: data };
+    return { responseText: data, readyState: 4, status: 400 };
 }
 
 // runs the program, simulates the click
