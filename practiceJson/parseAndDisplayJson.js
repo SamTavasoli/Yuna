@@ -3,20 +3,32 @@
 function loadDocument (url, cFunction)
 {
     // gets the xml data
-    // parses it
-    // displays it
+    var fakeThis = getDataFromFakeXmlRequest(url);
+    if (fakeThis.readyState == 4 && fakeThis.status == 200) {
+         // parses it
+        var parsed = cFunction(fakeThis);
+         // displays it
+        displayJsonData(parsed);
+      }
+      else{
+           console.log("The file name is not correct")
+      }
+   
 }
 
 // parses the string it receives
 function parseJson (xhttp)
 {
     // parses json
+    const obj = JSON.parse(xhttp);
     // returns parsed json data
+    return obj;
 }
 
 // makes jsonData pretty and logs it
 function displayJsonData (jsonData)
 {
+    console.log(jsonData)
     // loops through all items on json data and writes a string
     // displays the string that you made (console.log in node, .innerHTML in browser)
 }
@@ -24,7 +36,9 @@ function displayJsonData (jsonData)
 // pretends like the button is clicked and calls the right action funciton
 function fakeOnClick()
 {
-    // call loadDocument with file location and parseJson
+    // call loadDocument with file location and parseJson   ./studentData.json
+    loadDocument ("./studentData.json", parseJson)
+
 }
 
 // no need to touch this
