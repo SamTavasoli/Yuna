@@ -4,6 +4,7 @@ function loadDocument (url, cFunction)
 {
     // gets the xml data
     var fakeThis = getDataFromFakeXmlRequest(url);
+    console.log(fakeThis)
     if (fakeThis.readyState == 4 && fakeThis.status == 200) {
          // parses it
         var parsed = cFunction(fakeThis);
@@ -37,15 +38,20 @@ function displayJsonData (jsonData)
 function fakeOnClick()
 {
     // call loadDocument with file location and parseJson   ./studentData.json
-    loadDocument ("./studentData.json", parseJson)
-
+    loadDocument (getUrlFromInputField(), parseJson)
 }
 
 // no need to touch this
 function getDataFromFakeXmlRequest(fileLocation)
 {
     var data = require('fs').readFileSync(fileLocation, 'utf8');
-    return { responseText: data, readyState: 4, status: 400 };
+    var response = { responseText: data, readyState: 4, status: 200 };
+    return response;
+}
+
+function getUrlFromInputField () 
+{
+    return 'studentData.json';
 }
 
 // runs the program, simulates the click
