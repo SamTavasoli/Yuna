@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment #09</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body id="page">
+        <br>
+        <a href="../index.html">My CSS 213 Assignments</a></p>
+        <p><h1>This is assignment #09</h1></p>
+
+
+        <div id="demo">
+          <h2>Select one of four countries to see their ten largest cities and their population</h2>
+        </div>
+        <section id="allCount">
+        <div>
+          <div id="country1">
+          <button type="button" id="b1" onclick="loadDoc1('ajax_info.txt', myFunction)">Canada</button><br><br>
+          </div>
+          <div id="country2">
+            <button type="button" id="b2" onclick="loadDoc2('ajax_info.txt', myFunction)">Russia</button><br><br>
+          </div>
+          <div id="country3">
+            <button type="button" id="b3" onclick="loadDoc3('ajax_info.txt', myFunction)">Mexico</button><br><br>
+          </div>
+          <div id="country4">
+            <button type="button" id="b4" onclick="loadDoc4('ajax_info.txt', myFunction)">USA</button><br><br>
+          </div>
+        </div>
+      </section>
+
+        <hr>
+
+        <div id="part2">
+          <button type="button" id="" >Button</button><br><br>
+          <label for="">Address: </label><br>
+          <textarea id="address"></textarea><br>
+        </div>
+        
+          
+
+
+          <script>
+          function loadDoc1(url, cFunction) {
+            var xhttp;
+            xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                cFunction(this);
+              }
+            };
+            xhttp.open("POST", "canada.txt", true);
+            xhttp.send();
+          }
+          function myFunction(xhttp) {
+            document.getElementById("demo").innerHTML =
+            xhttp.responseText;
+          }
+
+          function loadDoc2(url, cFunction) {
+            var xhttp;
+            xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                cFunction(this);
+              }
+            };
+            xhttp.open("POST", "russia.txt", true);
+            xhttp.send();
+          }
+          function myFunction(xhttp) {
+            document.getElementById("demo").innerHTML =
+            xhttp.responseText;
+          }
+
+          function loadDoc3(url, cFunction) {
+            var xhttp;
+            xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                cFunction(this);
+              }
+            };
+            xhttp.open("POST", "mexico.txt", true);
+            xhttp.send();
+          }
+          function myFunction(xhttp) {
+            document.getElementById("demo").innerHTML =
+            xhttp.responseText;
+          }
+
+          function loadDoc4(url, cFunction) {
+            var xhttp;
+            xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                cFunction(this);
+              }
+            };
+            xhttp.open("POST", "usa.txt", true);
+            xhttp.send();
+          }
+          function myFunction(xhttp) {
+            document.getElementById("demo").innerHTML =
+            xhttp.responseText;
+          }
+
+            </script>
+        
+
+    </body>
+</html>

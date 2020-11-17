@@ -23,7 +23,7 @@
             var monthlyPayment = (amountNum * pRate) / (1 - (Math.pow((1 + pRate), loanPeriod * -1)));
             monthlyPayment = "Monthly payment: $ " + monthlyPayment.toFixed(2);
             //output       
-            if (inputs.any(input => input == '' || input == null)) {
+            if (inputs.some(input => input == '' || input == null)) {
                 document.getElementById("payment").innerHTML =
                     "Please Fill out the blank fields to claculate the monthly payment";
             } else if (isNaN(aprNum) || aprNum < 0 || aprNum > 25) {

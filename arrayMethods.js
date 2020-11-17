@@ -1,4 +1,4 @@
-//
+
 let number = 0;
 console.log(typeof(number))
 
@@ -58,3 +58,5 @@ function addArray (result, number) {
     console.log()
     return result + number
 }
+
+
